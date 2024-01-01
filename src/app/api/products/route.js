@@ -2,16 +2,6 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 export const dynamic = "force-dynamic"; // defaults to auto
 
-export async function GET(request) {
-  return new Response("Hello, Next.js!", {
-    status: 200,
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type, Authorization",
-    },
-  });
-}
 export async function GET(req) {
   const searchParams = req.nextUrl.searchParams;
   const cat = searchParams.get("cat");
@@ -26,7 +16,14 @@ export async function GET(req) {
       : {}
   );
 
-  return Response.json(products);
+  return Response.json(products, {
+    status: 200,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type, Authorization",
+    },
+  });
 }
 
 export async function POST(req) {

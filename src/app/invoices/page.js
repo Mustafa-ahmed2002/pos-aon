@@ -7,7 +7,7 @@ import AppContainer from "@/components/Contaner/container";
 const Invoices = () => {
   const [invoices, setInvoices] = useState([]);
   const getInvoices = async () => {
-    let url = "http://localhost:3000/api/invoice";
+    let url = "/api/invoice";
 
     try {
       let res = await fetch(url);

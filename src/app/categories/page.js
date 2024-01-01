@@ -10,7 +10,7 @@ const Categories = () => {
 
   const getCategories = async () => {
     try {
-      let res = await fetch("http://localhost:3000/api/categories");
+      let res = await fetch("/api/categories");
       let jsonData = await res.json();
       setCategories(jsonData);
       console.log(jsonData);
@@ -18,7 +18,7 @@ const Categories = () => {
   };
   const handleAdd = async () => {
     try {
-      let res = await fetch("http://localhost:3000/api/categories", {
+      let res = await fetch("/api/categories", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

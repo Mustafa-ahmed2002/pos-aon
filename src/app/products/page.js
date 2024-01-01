@@ -16,7 +16,7 @@ const Products = () => {
   const [value, setValue] = useState("");
   const [AddProduct, setAddProduct] = useState("");
   const getProducts = async () => {
-    let url = "http://localhost:3000/api/products";
+    let url = "/api/products";
 
     try {
       let res = await fetch(url);
@@ -31,7 +31,7 @@ const Products = () => {
     item.name.toLowerCase().includes(value.toLowerCase())
   );
   const handleAdd = async () => {
-    let res = await fetch("http://localhost:3000/api/products", {
+    let res = await fetch("/api/products", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

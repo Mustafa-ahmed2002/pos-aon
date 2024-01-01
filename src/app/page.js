@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [cart, setCart] = useState([]);
   const [list, setList] = useState([]);
+
   const [cats, setCats] = useState([]);
 
   const getProducts = async (cat) => {
@@ -72,7 +73,7 @@ export default function Home() {
   const handleConfirm = async () => {
     var raw = JSON.stringify({
       items: { cart },
-      number: 1
+      number: 1,
     });
 
     try {
@@ -84,8 +85,11 @@ export default function Home() {
         body: raw,
       });
       let jsonData = await res.json();
+
       console.log(jsonData);
-    } catch (error) {}
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -95,8 +99,8 @@ export default function Home() {
         <div className={styles.content}>
           <div className={styles.items}>
             <div className={styles.categories}>
-              {cats.map((el) => (
-                <Card isPressable onPress={() => getProducts(el.id)}>
+              {cats.map((el, i) => (
+                <Card key={i} isPressable onPress={() => getProducts(el.id)}>
                   <CardBody>
                     <p>{el.name}</p>
                   </CardBody>

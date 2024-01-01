@@ -1,6 +1,9 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
-
+export async function GET(req) {
+  let invoice = await prisma.invoice.findMany();
+  return Response.json(invoice);
+}
 export async function POST(req) {
   const body = await req.json();
   try {

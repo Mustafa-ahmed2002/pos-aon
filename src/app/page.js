@@ -12,8 +12,8 @@ export default function Home() {
   const [cats, setCats] = useState([]);
 
   const getProducts = async (cat) => {
-    let url = "http://localhost:3000/api/products";
-    if (cat) url = `http://localhost:3000/api/products?cat=${cat}`;
+    let url = "/api/products";
+    if (cat) url = `/api/products?cat=${cat}`;
 
     try {
       let res = await fetch(url);
@@ -24,7 +24,7 @@ export default function Home() {
 
   const getCategories = async () => {
     try {
-      let res = await fetch("http://localhost:3000/api/categories");
+      let res = await fetch("/api/categories");
       let jsonData = await res.json();
       setCats(jsonData);
     } catch (error) {}
@@ -77,7 +77,7 @@ export default function Home() {
     });
 
     try {
-      let res = await fetch("http://localhost:3000/api/invoice", {
+      let res = await fetch("/api/invoice", {
         headers: {
           "Content-Type": "application/json",
         },

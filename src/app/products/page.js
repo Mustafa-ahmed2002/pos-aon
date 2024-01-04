@@ -40,7 +40,7 @@ const Products = () => {
         name: AddProduct,
         image: "https://picsum.photos/100/200",
         price: 1200000,
-        categoryId: 2,
+        categoryId: 6,
       }),
     });
     if (res.ok) {
